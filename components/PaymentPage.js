@@ -25,7 +25,7 @@ const PaymentPage = ({ username }) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   useEffect(() => {
     if (searchParams.get("paymentdone") == "true") {
@@ -42,7 +42,7 @@ const PaymentPage = ({ username }) => {
       });
     }
     router.push(`/${username}`);
-  }, []);
+  }, [searchParams, router, username]);
 
   const handleChange = (e) => {
     setPaymentform({ ...paymentform, [e.target.name]: e.target.value });
