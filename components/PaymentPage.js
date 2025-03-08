@@ -48,12 +48,12 @@ const PaymentPage = ({ username }) => {
     setPaymentform({ ...paymentform, [e.target.name]: e.target.value });
   };
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     let u = await fetchuser(username);
     setcurrentUser(u);
     let dbpayments = await fetchpayments(username);
     setPayments(dbpayments);
-  };
+  }, [username]);
 
   const pay = async (amount) => {
     if (typeof window === "undefined") return; // Ensure this runs on the client side
